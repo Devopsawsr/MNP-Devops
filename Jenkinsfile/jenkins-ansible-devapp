@@ -1,5 +1,5 @@
 pipeline {
-    agent {label ""}
+    agent {label "Ansible"}
 
     environment {
         playbookPath = "/var/lib/jenkins/workspace/${JOB_NAME}/Ansible/Dev/APP/httpd_config.yml"
