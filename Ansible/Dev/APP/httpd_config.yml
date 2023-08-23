@@ -1,0 +1,8 @@
+---
+- name: This is to configure HTTPD in Dev app servers
+  hosts: Dev_App
+  user: ansible
+  become: yes
+  tasks:
+   - name: Install HTTPD
+     yum: pkg=httpd state=installed

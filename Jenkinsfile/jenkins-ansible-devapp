@@ -1,0 +1,30 @@
+pipeline {
+    agent {label ""}
+
+    environment {
+        playbookPath = "/var/lib/jenkins/workspace/${JOB_NAME}/Ansible/Dev/APP/httpd_config.yml"
+        inventoryPath = "/var/lib/jenkins/workspace/${JOB_NAME}/Ansible/Dev/inventory.ini"
+    }
+    stages {
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Deployment') {
+            steps {
+                sh '''
+                sudo -u ansible ansible-playbook -i ${inventoryPath} ${playbookPath} -vvv
+                '''
+            }
+        }
+    }
+    post {
+        success {
+            echo "Ansible playbook is successfull"
+        }
+        failure {
+            echo "Ansible Playbook failed"
+        }
+    }
+}
