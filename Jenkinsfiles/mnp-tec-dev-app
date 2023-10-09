@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage ('checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage ('Deploy') {
+            steps {
+                sh '''
+                cp /var/lib/jenkins/workspace/pipline-01/index.html /var/www/html/
+                '''
+            }
+        }
+    }
+}
