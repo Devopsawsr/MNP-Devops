@@ -1,37 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage ("Deletaing user") {
+        stage ('checkout') {
             steps {
-             sh "sudo userdel mnp.tech"
+                checkout scm
             }
         }
-        stage ("Verify users") {
-            steps {
-               sh "sudo cat /etc/passwd"
-            }
-        }
-        stage ("Adding user") {
-            steps {
-                sh "sudo useradd mnp.tech"
-            }
-        }
-        stage ("Test") {
+        stage ('Deploy') {
             steps {
                 sh '''
-                echo a
-                echo b
-                echo c
+                sudo cp /var/lib/jenkins/workspace/pipline-01/index.html /var/www/html/
                 '''
             }
         }
     }
-    post {
-        success {
-            echo "The Build is success"
-        }
-        failure {
-            echo "The build is failed"
-        }
-    } 
 }
