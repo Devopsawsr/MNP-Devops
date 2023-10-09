@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage ("Deletaing user") {
+            steps {
+             sh "sudo userdel mnp.tech"
+            }
+        }
+        stage ("Verify users") {
+            steps {
+               sh "sudo cat /etc/passwd"
+            }
+        }
+        stage ("Adding user") {
+            steps {
+                sh "sudo useradd mnp.tech"
+            }
+        }
+        stage ("Test") {
+            steps {
+                sh '''
+                echo a
+                echo b
+                echo c
+                '''
+            }
+        }
+    }
+    post {
+        success {
+            echo "The Build is success"
+        }
+        failure {
+            echo "The build is failed"
+        }
+    } 
+}
