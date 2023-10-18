@@ -1,5 +1,5 @@
 pipeline {
-    agent {label "mnp-dev-app-agent"}
+    agent {label "jenkins"}
     stages {
         stage ("checkscm") {
             steps {
