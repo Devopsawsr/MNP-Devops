@@ -1,0 +1,15 @@
+pipeline {
+    agent {label "mnp-dev-app-agent"}
+    stages {
+        stage ("checkscm") {
+            steps {
+                checkout scm
+            }
+        }
+        stage ("Deploy") {
+            steps {
+                sh "cp /var/lib/jenkins/workspace/dev-01/index.html /var/www/html/"
+            }
+        }
+    }
+}
