@@ -1,5 +1,5 @@
 pipeline {
-    agent {label "jenkins"}
+    agent {label "qa-slave-chinna"}
     stages {
         stage ("checkscm") {
             steps {
