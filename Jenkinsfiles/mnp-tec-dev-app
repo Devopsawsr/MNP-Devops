@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 sudo rm -rf /var/www/html/*
-                sudo cp /var/lib/jenkins/workspace/${JOB_NAME}/mnp_index.html /var/www/html/
+                sudo cp /var/lib/jenkins/workspace/${JOB_NAME}/index.html /var/www/html/
                 '''
             }
         }
